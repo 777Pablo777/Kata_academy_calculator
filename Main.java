@@ -45,11 +45,19 @@ public class Main {
         int n1 = n;
 
         if(x1==3){
-            n1 = 10;
-        } else if (48 <= n1 & n1 <= 57) {
-            n1 = n1 -'0';
-        }
+            if(ch[0]=='1'& ch[1]=='0') {
+                n1 = 10;
+            }
+            else{
+                System.out.println("throws Exception");
+                System.exit(0);
+                }
 
+        } else if (x1==2) {
+            if (48 <= n1 & n1 <= 57) {
+                n1 = n1 - '0';
+            }
+        }
         for (int i = ch.length - 1; i >= 0; i--) {
             x2++;
             if (ch[i] == '+' | ch[i] == '-' | ch[i] == '*' | ch[i] == '/') {
@@ -60,9 +68,17 @@ public class Main {
 
         int m1 = m;
         if(x2==3){
-            m1=10;
-        } else if (48 <= m1 & m1 <= 57 ) {
-            m1 = m1 -'0';
+           if(ch[ch.length-1]=='0' & ch[ch.length-2]=='1') {
+               m1 = 10;
+           }
+           else{
+               System.out.println("throws Exception");
+               System.exit(0);
+           }
+        } else if (x2==2) {
+            if (48 <= m1 & m1 <= 57) {
+                m1 = m1 - '0';
+            }
         }
         else {
             System.out.println("throws Exception");
@@ -83,4 +99,3 @@ public class Main {
         }
     }
 }
-
