@@ -51,12 +51,23 @@ public class Main {
             else{
                 System.out.println("throws Exception");
                 System.exit(0);
-                }
+            }
 
         } else if (x1==2) {
-            if (48 <= n1 & n1 <= 57) {
+            if ( 48 <= n1  & n1 <= 58) {
                 n1 = n1 - '0';
+                if(n1==0){
+                    System.out.println("throws Exception");
+                    System.exit(0);
+                }
+            }else {
+                System.out.println("throws Exception");
+                System.exit(0);
             }
+        }
+        else {
+            System.out.println("throws Exception");
+            System.exit(0);
         }
         for (int i = ch.length - 1; i >= 0; i--) {
             x2++;
@@ -68,18 +79,25 @@ public class Main {
 
         int m1 = m;
         if(x2==3){
-           if(ch[ch.length-1]=='0' & ch[ch.length-2]=='1') {
-               m1 = 10;
-           }
-           else{
-               System.out.println("throws Exception");
-               System.exit(0);
-           }
+            if(ch[ch.length-1]=='0' & ch[ch.length-2]=='1') {
+                m1 = 10;
+            }
+            else{
+                System.out.println("throws Exception");
+                System.exit(0);
+            }
         } else if (x2==2) {
             if (48 <= m1 & m1 <= 57) {
                 m1 = m1 - '0';
+                if(m1==0){
+                    System.out.println("throws Exception");
+                    System.exit(0);
+                }
             }
-        }
+            else {
+                System.out.println("throws Exception");
+                System.exit(0);
+        }}
         else {
             System.out.println("throws Exception");
             System.exit(0);
