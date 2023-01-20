@@ -1,39 +1,34 @@
+import javax.lang.model.element.NestingKind;
 import java.util.Scanner;
 public class Main {
+    public static char operation = 0;
+
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String str = scan.nextLine();
-        char[] ch = str.toCharArray();
+        Scanner in = new Scanner(System.in);
+        String s = in.nextLine();
+        calc(s);
+
+    }
+    public static void calc(String input) {
+        char[] ch = input.toCharArray();
         int count = 0;
-        char x = 0;
-        if (3 <= ch.length & ch.length <= 5) {
+
             for (int i = 0; i < ch.length; i++) {
                 if (ch[i] == '+' | ch[i] == '-' | ch[i] == '*' | ch[i] == '/') {
                     count++;
-                    x = ch[i];
+                    operation = ch[i];
                 }
 
             }
-            if (count != 1) {
-                System.out.println("throws Exception");
-                System.exit(0);
+            if (count == 0) {
+                throw new ArithmeticException("строка не является математической операцией");
             }
-        } else {
-            System.out.println("throws Exception");
-            System.exit(0);
-        }
-
-        for (int i = 0; i < ch.length; i++) {
-            if (ch[i] == '.' | ch[i] == ',') {
-                System.out.println("throws Exception");
-                System.exit(0);
-
+            if (count>=2){
+                throw new ArithmeticException("формат математической операции не удовлетворяет заданию - два операнда");
             }
-        }
+
         char n = 0;
-        char m = 0;
         int x1 = 0;
-        int x2 = 0;
         for (int i = 0; i < ch.length; i++) {
             x1++;
             if (ch[i] == '+' | ch[i] == '-' | ch[i] == '*' | ch[i] == '/') {
@@ -48,27 +43,28 @@ public class Main {
             if(ch[0]=='1'& ch[1]=='0') {
                 n1 = 10;
             }
-            else{
-                System.out.println("throws Exception");
-                System.exit(0);
-            }
+            else {
+                    throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
+                }
+
 
         } else if (x1==2) {
             if ( 48 <= n1  & n1 <= 58) {
                 n1 = n1 - '0';
                 if(n1==0){
-                    System.out.println("throws Exception");
-                    System.exit(0);
+                    throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
                 }
             }else {
-                System.out.println("throws Exception");
-                System.exit(0);
+                throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
             }
         }
         else {
-            System.out.println("throws Exception");
-            System.exit(0);
+            throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
         }
+
+        char m = 0;
+        int x2 = 0;
+
         for (int i = ch.length - 1; i >= 0; i--) {
             x2++;
             if (ch[i] == '+' | ch[i] == '-' | ch[i] == '*' | ch[i] == '/') {
@@ -78,41 +74,38 @@ public class Main {
         }
 
         int m1 = m;
+
         if(x2==3){
             if(ch[ch.length-1]=='0' & ch[ch.length-2]=='1') {
                 m1 = 10;
             }
             else{
-                System.out.println("throws Exception");
-                System.exit(0);
+                throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
             }
         } else if (x2==2) {
             if (48 <= m1 & m1 <= 57) {
                 m1 = m1 - '0';
                 if(m1==0){
-                    System.out.println("throws Exception");
-                    System.exit(0);
+                    throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
                 }
             }
             else {
-                System.out.println("throws Exception");
-                System.exit(0);
-        }}
+                throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
+            }}
         else {
-            System.out.println("throws Exception");
-            System.exit(0);
+            throw new ArithmeticException("формат математической операции не удовлетворяет заданию");
         }
 
-        if(x=='+'){
+        if(operation=='+'){
             System.out.println(n1+m1);
         }
-        if(x=='-'){
+        if(operation=='-'){
             System.out.println(n1-m1);
         }
-        if(x=='*'){
+        if(operation=='*'){
             System.out.println(n1*m1);
         }
-        if(x=='/'){
+        if(operation=='/'){
             System.out.println(n1/m1);
         }
     }
